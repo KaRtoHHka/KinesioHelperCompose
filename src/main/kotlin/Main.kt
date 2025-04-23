@@ -7,8 +7,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
-import screens.CheckScreen
-import screens.log
+import screens.TabScreen
 import theme.*
 import javax.swing.UIManager
 
@@ -30,15 +29,12 @@ private val LightColorPalette = lightColors(
 @Preview
 fun App(size: DpSize) {
     MaterialTheme (colors = LightColorPalette){
-        CheckScreen()
+        TabScreen()
     }
 }
 
 fun main() = application {
     Thread.setDefaultUncaughtExceptionHandler { _, throwable ->
-        // Handle the uncaught exception
-        log(throwable.stackTraceToString() ?: "Error")
-//        showErrorDialog()
     }
     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName())
     val size by remember { mutableStateOf(DpSize.Unspecified) }

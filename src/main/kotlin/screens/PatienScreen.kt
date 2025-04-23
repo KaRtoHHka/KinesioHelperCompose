@@ -74,7 +74,6 @@ fun PatientScreen(pat: Patient) {
                         type = ToastType.Info
                     )
                 } catch (e: Exception) {
-                    log(e.stackTraceToString())
                     println(e)
                 }
             }) {

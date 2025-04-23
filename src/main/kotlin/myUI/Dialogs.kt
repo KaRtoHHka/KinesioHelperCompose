@@ -20,7 +20,6 @@ import com.dokar.sonner.rememberToasterState
 import controller.createHomework
 import model.patient.Patient
 import saveFileChooserDialog
-import screens.log
 
 @Composable
 fun HomeworkDialog(showDialog: Boolean, pat: Patient, setShowDialog: (Boolean) -> Unit) {
@@ -85,12 +84,10 @@ fun HomeworkDialog(showDialog: Boolean, pat: Patient, setShowDialog: (Boolean) -
                             onClick = {
                                 setShowDialog(false)
                                 val file = saveFileChooserDialog("Куда сохранить домашнее задание?", "${pat.patientName.value.text}.docx")
-                                log("file - ${file.toString()}")
                                 if (file != null) try {
                                     try {
                                         createHomework(file, map.toMutableMap())
                                     } catch (e: Exception) {
-                                        log(e.stackTraceToString())
                                         e.printStackTrace()
                                     }
 
@@ -99,7 +96,6 @@ fun HomeworkDialog(showDialog: Boolean, pat: Patient, setShowDialog: (Boolean) -
                                         type = ToastType.Info
                                     )
                                 } catch (e: Exception) {
-                                    log(e.stackTraceToString())
                                     println(e)
                                 }
                             },
